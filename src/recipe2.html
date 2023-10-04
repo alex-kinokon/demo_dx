@@ -1,0 +1,139 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipes</title>
+    <style>
+      body {
+        color-scheme: light dark;
+        /** Screenshot uses the Inter font, of which the closest equivalent is San Francisco (d’oh). */
+        font-family: Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+        font-size: 15px;
+        margin: 0;
+        padding: 2em 3.5em;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2rem;
+      }
+      .recipe {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 12px 20px;
+      }
+      .recipe ul {
+        padding: 0;
+        position: relative;
+      }
+      .recipe li {
+        list-style: none;
+        margin-bottom: 0.4em;
+      }
+      h4.title {
+        font-size: 1.6em;
+        font-weight: 400;
+        margin: 0;
+      }
+      .show-more {
+        border-radius: 3px;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.95em;
+        display: none;
+        width: 100%;
+        padding: 0.4em 0;
+        text-align: center;
+        appearance: none;
+        background-color: #fff;
+        position: absolute;
+        bottom: -10px;
+        left: -4px;
+      }
+      .show-more:hover {
+        background-color: #eee;
+      }
+      .show-more::after {
+        content: "Show More";
+      }
+      .show-more:checked::after {
+        content: "Show Less";
+      }
+
+      /**
+       * Only show the show-more button if there are more than 10 list items
+       */
+      .recipe ul li:nth-child(11) ~ .show-more {
+        display: inline-block;
+      }
+
+      /**
+       * Hide all list items after the 10th list item. This does not affect
+       * shorter lists because none will match this ~ selector.
+       */
+      .show-more:not(:checked) ~ li {
+        display: none;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #333;
+          color: #fff;
+        }
+        .show-more {
+          background-color: #333;
+        }
+        .show-more:hover {
+          background-color: #555;
+        }
+        .recipe {
+          background-color: #444;
+          border-color: #555;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="recipe">
+        <h4 class="title">Meat Lasagna Recipe</h4>
+        <ul>
+          <li><input type="checkbox" />1 pound sweet Italian sausage</li>
+          <li><input type="checkbox" />3/4 pound lean ground beef</li>
+          <li><input type="checkbox" />1/2 cup minced onion</li>
+          <li><input type="checkbox" />2 cloves garlic, crushed</li>
+          <li><input type="checkbox" />1 (28 ounce) can crushed tomatoes</li>
+          <li><input type="checkbox" />2 (6 ounce) cans tomato paste</li>
+          <li><input type="checkbox" />2 (6.5 ounce) cans canned tomato sauce</li>
+          <li><input type="checkbox" />1/2 cup water</li>
+          <li><input type="checkbox" />2 tablespoons white sugar</li>
+          <li><input type="checkbox" />11/2 teaspoons dried basil leaves</li>
+          <input type="checkbox" class="show-more" />
+        </ul>
+      </div>
+
+      <div class="recipe">
+        <h4 class="title">Meat Lasagna Recipe</h4>
+        <ul>
+          <li>1 pound sweet Italian sausage</li>
+          <li>3/4 pound lean ground beef</li>
+          <li>1/2 cup minced onion</li>
+          <li>2 cloves garlic, crushed</li>
+          <li>1 (28 ounce) can crushed tomatoes</li>
+          <li>2 (6 ounce) cans tomato paste</li>
+          <li>2 (6.5 ounce) cans canned tomato sauce</li>
+          <li>1/2 cup water</li>
+          <li>2 tablespoons white sugar</li>
+          <li>11/2 teaspoons dried basil leaves</li>
+          <li>1/2 teaspoon fennel seeds</li>
+          <input type="checkbox" class="show-more" />
+          <li>1 teaspoon Italian seasoning</li>
+          <li>
+            11/2 teaspoons salt, divided, or to taste 1/4 teaspoon ground black pepper
+          </li>
+          <li>4 tablespoons chopped fresh parsley</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
